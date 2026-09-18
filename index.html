@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aragorn: Heir of Isildur — 핵앤슬래시</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="game-canvas"></canvas>
+      <div id="dmg-layer"></div>
+
+      <!-- HUD -->
+      <div id="hud" class="hidden">
+        <div id="hud-left">
+          <div class="portrait">
+            <div class="portrait-ring"></div>
+            <div class="portrait-lvl" id="hud-level">1</div>
+          </div>
+          <div class="bars">
+            <div class="name-row"><span class="name">아라곤</span><span class="title" id="hud-title">두네다인의 순찰자</span></div>
+            <div class="bar hp"><div class="fill" id="bar-hp"></div><span class="label" id="txt-hp"></span></div>
+            <div class="bar will"><div class="fill" id="bar-will"></div><span class="label" id="txt-will"></span></div>
+            <div class="bar xp"><div class="fill" id="bar-xp"></div><span class="label" id="txt-xp"></span></div>
+          </div>
+        </div>
+        <div id="hud-right">
+          <div class="zone" id="hud-zone">브리 평원</div>
+          <div class="wave" id="hud-wave">웨이브 1</div>
+          <div class="enemies" id="hud-enemies">적 0</div>
+          <div class="gold" id="hud-gold">◈ 0</div>
+          <div class="points hidden" id="hud-points"></div>
+        </div>
+        <div id="boss-bar" class="hidden">
+          <div class="boss-name" id="boss-name"></div>
+          <div class="bar boss"><div class="fill" id="bar-boss"></div></div>
+        </div>
+        <div id="wave-banner" class="hidden"></div>
+        <div id="skillbar"></div>
+        <div id="hint">WASD 이동 · 좌클릭 공격 · Space 회피 · 1-6 스킬 · Q 물약 · K 스킬 · C 캐릭터 · Esc 일시정지</div>
+        <div id="toast-area"></div>
+      </div>
+
+      <!-- Panels -->
+      <div id="panel-skills" class="panel hidden"></div>
+      <div id="panel-char" class="panel hidden"></div>
+
+      <!-- Screens -->
+      <div id="screen-title" class="screen">
+        <div class="title-box">
+          <div class="subtitle">THE LORD OF THE RINGS</div>
+          <h1>ARAGORN</h1>
+          <div class="subtitle2">이실두르의 후계자</div>
+          <p class="desc">모르도르의 군세가 중간계를 뒤덮는다.<br />안두릴을 들고 브리 평원에서 펠렌노르까지, 끝없는 웨이브를 베어 넘겨라.</p>
+          <div class="menu">
+            <button id="btn-new" class="btn">새 게임</button>
+            <button id="btn-continue" class="btn hidden">이어하기</button>
+          </div>
+          <div class="controls">
+            <div><b>WASD</b> 이동</div><div><b>마우스</b> 조준</div><div><b>좌클릭</b> 검 공격 (3연격)</div>
+            <div><b>Space</b> 회피 구르기</div><div><b>1~6</b> 스킬</div><div><b>Q</b> 물약</div>
+            <div><b>K</b> 스킬 트리</div><div><b>C</b> 캐릭터 / 장비</div><div><b>Esc</b> 일시정지</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="screen-dead" class="screen hidden">
+        <div class="title-box">
+          <h1 class="red">쓰러졌다</h1>
+          <p class="desc" id="dead-summary"></p>
+          <div class="menu">
+            <button id="btn-retry" class="btn">다시 일어서기 (진행 유지)</button>
+            <button id="btn-title" class="btn secondary">타이틀로</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="screen-pause" class="screen hidden">
+        <div class="title-box">
+          <h1>일시정지</h1>
+          <div class="menu">
+            <button id="btn-resume" class="btn">계속</button>
+            <button id="btn-save-quit" class="btn secondary">저장 후 타이틀로</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
